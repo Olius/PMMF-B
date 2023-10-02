@@ -1,0 +1,47 @@
+\chapter	{Stochastic Processes and Brownian Motion}
+
+\section	{0--1~Law, Stopping Times, and Recurrence of~BM}
+
+\setcounter	{block}	{27}
+\begin	{theorem}[0--1~law]
+Let $B_t$ be continous Brownian motion.
+Set \( \mathcal F_{[a,b)} = \sgen(\, B_t - B_a \colon a \le t < b \,) \),
+and \( \mathcal F_{0^+} = \bigwedge_{\epsilon>0} \mathcal F_{[0,\epsilon)} \).
+Then \( \mathcal F_{0^+} \perp \mathcal F_{[0,\infty)} \).
+\end	{theorem}
+\begin	{proof}
+\( \mathcal F_{0^+} \perp \mathcal F_{[\epsilon,\infty)} \)
+for every \( \epsilon > 0 \),
+so \( \mathcal F_{0^+}
+\perp \bigvee_{\epsilon>0} \mathcal F_{[\epsilon,\infty)} \),
+but by continuity \( \bigvee_{\epsilon>0} \mathcal F_{[\epsilon,\infty)}
+= \mathcal F_{[0,\infty)} \).
+\end	{proof}
+
+\setcounter	{block}	{29}
+\begin	{remark}
+Suppose $X_t$ is a continuous stochastic process
+on a topological space~$S$
+in which every open \( U \subseteq S \) admits closed \( F_n \subseteq U \)
+with \( U = \bigcup_n F_n^\circ \)
+(for example a metric space).
+The~$F_n$ can be assumed increasing.
+Then for closed \( F \subseteq S \)
+the entry time \( T_F = \min\{\, t \colon X_t \in F \,\} \)
+is a stopping time:
+\(	\{ T_F > t \}
+=	\{ X_{[0,t]} \subseteq \co F = \bigcup_n F_n^\circ \}
+=	\bigcup_n \{ X_{[0,t]} \subseteq F_n \}
+=	\bigcup_n \bigcap_{0\le q\le t} \{ X_q \in F_n \}
+\).
+\end	{remark}
+
+%TODO fix numbering
+\begin	{proposition}
+Almost surely \( \lim_{x\to0} T_x = 0 \).
+\end	{proposition}
+\begin	{proof}
+\( T_x \to 0 \) iff $B_t$ changes sign on every interval~$[0,\epsilon]$.
+This is an event in~$\mathcal F_{0^+}$,
+but \( 2\prob(B_{[0,\epsilon]} \ge 0) \le 1 \).
+\end	{proof}
