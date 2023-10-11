@@ -1,0 +1,119 @@
+\chapter	{Kolmogorov Extension Theorem}
+
+Let \( S^\alpha \) be a directed family of Hausdorff spaces,
+indexed by \( \alpha \in A \).
+Suppose that $\mu^\alpha$ is
+an inner-regular probability measure on~$S^\alpha$,
+such that the maps \( p_\beta^\alpha \colon S^\beta \to S^\alpha \)
+for \( \beta \ge \alpha \)
+preserve the measures,
+in that \( p_\beta^\alpha(\mu^\beta) = \mu^\alpha \).
+Finally, suppose that the~$p_\beta^\alpha$ are surjections.
+Let \( S^A = \projlim_\alpha S^\alpha \)
+be the projective limit in the category of measurable spaces,
+with projections \( p^\alpha = p_A^\alpha \colon S^A \to S^\alpha \).
+\begin	{theorem}[Kolmogorov Extension]
+\label	{thm:kolmogorov-extension}
+There exists a unique probability measure~$P$ on~$S^A$
+such that \( p^\alpha(P) = \mu^\alpha \).
+\end	{theorem}
+
+\begin	{lemma}
+\label	{lem:CH-projlim}
+Let \( X^J = \lim_{j \in J} X^j \)
+be a filtered limit of compact Hausdorff spaces.
+Then $X^J$ is compact Hausdorff,
+and if \( X^j \ne \emptyset \) then \( X^J \ne \emptyset \).
+\end	{lemma}
+\begin	{proof}
+For \( f \colon j \to j' \) in~$J$,
+let \( F_f = \{\, \mathbf x \in \prod_{j \in J} X^j
+\mid f \cdot \mathbf x_j = \mathbf x_{j'} \,\} \).
+In the product topology,
+\( F_f \subseteq \prod_{j \in J} X^j \) is closed.
+Thus \( X^J \cong \bigcap_{f \in J} F_f \) is closed, compact, and Hausdorff.
+
+Suppose that \( x^j \in X^j \) for every \( j \in J \).
+Since \( \prod_{f \in J} X^j \) is compact by Tychonoff's theorem,
+it suffices to show for any finite subcategory \( K \subseteq J \)
+that \( \bigcap_{f \in K} F_f \ne \emptyset \).
+Since $J$ is filtering,
+$K$ admits a cone \( f_j \colon j_K \to j \), \( j \in K \).
+Setting \( \mathbf x_j = f_j \cdot x^{j_K} \) if \( j \in K \)
+and \( \mathbf x_j = x^j \) otherwise,
+\( \mathbf x \in \bigcap_{f \in K} F_f \).
+\end	{proof}
+
+\begin	{corollary}
+\label	{cor:surjective-projections}
+Suppose \( X^J = \lim_{j \in J} X^j \) is a filtered limit
+of compact Hausdorff spaces,
+where all involved maps between the~$X^j$ are surjective.
+Then every projection \( X^J \to X^j \) is a surjection.
+\end	{corollary}
+\begin	{proof}
+Let \( x^{j_0} \in X^{j_0} \),
+and apply the lemma replacing~$X^j$
+by the set of~$x^j$ for which \( f \cdot x^j = x^{j_0} \)
+for all \( f \colon j \to j_0 \).
+%by \( \bigcap_{f \colon j \to j_0} \{\, x^j \in X^j
+%\mid f \cdot x^j = x^{j_0} \,\} \).
+\end	{proof}
+
+Let \( \Sigma^A_0 = \bigcup_\alpha \sgen(p^\alpha) \).
+This is an algebra because the union is directed:
+if \( \alpha \ge \beta \)
+then \( \sgen(p^\alpha) = \sgen(p^\alpha_\beta p^\beta)
+\subseteq \sgen(p^\beta) \).
+%TODO compactification
+%TODO lettering
+An event \( A^A_0 \in \Sigma^A_0 \)
+is of the form \( A^A_0 = \{ p^\alpha \in A^\alpha \} \).
+Note that if \( \alpha,\beta \in A \)
+and \( \{ p^\alpha \in A^\alpha \} = \{ p^\beta \in A^\beta \} \),
+then for \( \gamma \ge \alpha,\beta \)
+we have
+\( (p^\gamma)^* \{ p^\alpha_\gamma \in A^\alpha \}
+=  (p^\gamma)^* \{ p^\beta _\gamma \in A^\beta  \}
+\),
+and because $p^\gamma$ is surjective
+by \autoref{cor:surjective-projections},
+we have the equality
+\( \{ p^\alpha_\gamma \in A^\alpha \}
+=  \{ p^\beta _\gamma \in A^\beta  \}
+\).
+In other words, if two events of~$\Sigma^A_0$ are equal,
+then they are pullbacks of equal events in some common~$\Sigma^\gamma$.
+We can therefore define an additive probability~$P_0$ on~$\Sigma^A_0$
+by \( P_0(p^\alpha \in A^\alpha) = \mu^\alpha(A^\alpha) \).
+To use the Carathéodory extension theorem,
+we must only check \sig additivity of~$P_0$,
+equivalently that if \( A^A_1 \supseteq A^A_2 \supseteq \dotsb \)
+and \( P_0(A^A_n) \ge \epsilon > 0 \)
+then \( \bigcap_n A^A_n \ne \emptyset \).
+
+By definition \( A^A_n = \{ p^{\alpha_n} \in A^{\alpha_n} \} \).
+By taking preimages we can suppose \( \alpha_1 \le \alpha_2 \le \dotsb\, \).
+%Since the~$p^{\alpha_n}$ are surjective,
+We obtain a sequence of \( A^{\alpha_n} \subseteq S^{\alpha_n} \)
+such that
+%\( p^{\alpha_n}_{\alpha_{n+1}}(A^{\alpha_{n+1}}) \subseteq A^{\alpha_n} \).
+\( \mu^{\alpha_n}(A^{\alpha_n}) = P_0(A^A_n) \ge \epsilon > 0 \).
+By inner regularity,
+there are compact sets \( C^{\alpha_n} \subseteq A^{\alpha_n} \)
+so that \( \mu^{\alpha_n}(A^{\alpha_n} \setminus C^{\alpha_n}) \)
+be arbitrarily small.
+Setting \( K^{\alpha_n} =
+\bigcap_{k\le n} \{p^{\alpha_k}_{\alpha_n} \in C^{\alpha_k}\} \bigr) \),
+we can in particular impose
+\(  \mu^{\alpha_n}(A^{\alpha_n} \setminus K^{\alpha_n})
+\le \sum_{k\le n} \mu^{\alpha_k}(A^{\alpha_k} \setminus C^{\alpha_k})
+<   \epsilon/2
+\) for all~$n$,
+so that \( \mu^{\alpha_n}(K^{\alpha_n}) \ge \epsilon/2 > 0 \)
+and \( K^{\alpha_n} \ne \emptyset \).
+Since $K^{\alpha_n}$ is the intersection of~$C^{\alpha_n}$
+and closed sets,
+$K^{\alpha_n}$ is compact.
+Furthermore \( p^{\alpha_n}_{\alpha_{n+1}}(K^{\alpha_{n+1}})
+\subseteq K^{\alpha_n} \).
