@@ -28,13 +28,11 @@ due to the system being directed.
 To wit, let \( A_k \subseteq S_{I_k} \) be a finite collection of events.
 Since the indices are directed there is an \( I_0 \ge I_k \) for all~$k$.
 Then as \( s_{I_k} = s_{I_k \le I_0} s_{I_0} \),
-the events \( s_{I_k} \in A_k \)
-and \( s_{I_0} \in \{s_{I_k \le I_0} \in A_k\} \)
-are equivalent, hence
 \begin	{equation}
 \label	{eq:product-algebra-is-union}
-	\bigcap_k \{s_{I_k} \in A_k\}
-		= \bigcap_k \{s_{I_0} \in s_{I_k \le I_0}^*(A_k)\}
+	\bigcap_k s_{I_k}^* A_k
+		= \bigcap_k s_{I_0}^* s_{I_0 \ge I_k}^* A_k
+		= s_{I_0}^* \bigcap_k s_{I_0 \ge I_k}^* A_k
 		\in \sgen(s_{I_0})
 		\subseteq \bigcup_I \sgen(s_I)
 	\text.
