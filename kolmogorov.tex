@@ -44,3 +44,32 @@ is a directed union of isomorphic copies of the~$\sgen(P_I)$.
 Moreover, by hypothesis \( P_J(s_{J \ge I}^*A_I) = P_I(A_I) \),
 so that \( P(s_I^*A_I) = P_I(A_I) \) is a valid definition
 of a finitely additive probability~$P$ on the union.
+
+To apply the Carathéodory extension theorem,
+we must check \sig additivity of~$P$ on the product algebra,
+which is equivalent to continuity in~$\emptyset$.
+So let \( A_n \subseteq S_{I_n} \) be a sequence of events
+such that \( s_{I_n}^* A_n \subseteq S \) is decreasing
+and such that \( P_{I_n}(A_n) \ge \varepsilon > 0 \) for all~$n$.
+We will show that \( \bigcap_n A_n \ne \emptyset \).
+Iteratively replacing~$I_{n+1}$ by an upper bound of $I_n$~and~$I_{n+1}$,
+we can suppose the~$I_n$ increasing.
+By tightness of the measures, there are compact \( C_n \subseteq A_n \)
+rendering \( P_n(A_n \setminus C_n) \) so small that
+\begin	{align}
+\label	{eq:kolmogorov-tight-compacts}
+	P_n( A_n \setminus \bigcap_{k \le n} s_{I_n \ge I_k}^* C_k )
+	&=	P_n\Bigl( \bigcup_{k \le n}
+		(A_n \setminus s_{I_n \ge I_k}^* C_k) \Bigr) \\
+	&\le	\sum_{k \le n} P_k( A_k \setminus C_k )      \\
+	&<	\frac \varepsilon 2                          \text.
+\end	{align}
+Set \( K_n = \bigcap_{k \le n} s_{I_n \ge I_k}^* C_k \).
+Since \( s_{I_n = I_n}^* C_n = C_n \) is compact
+and \( \bigcap_{k < n} s_{I_n \ge I_k}^* C_k \subseteq C_n \) is closed,
+$K_n$ is compact.
+By construction, \( s_{I_n \le I_{n+1}}(K_{n+1}) \subseteq K_n \).
+Finally, by the choice of~$C_n$, \( P_n(K_n) \ge \varepsilon/2 > 0 \),
+so that \( K_n \ne \emptyset \).
+Thus restricting \( s_{I_{n+1} \ge I_n} \colon K_{n+1} \to K_n \)
+yields a projective system of nonempty compact Hausdorff spaces.
