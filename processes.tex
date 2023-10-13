@@ -1,0 +1,32 @@
+\chapter	{Stochastic Processes and Brownian Motion}
+
+\section	{Stochastic Processes}
+
+\subsection	{The Kolmogorov Extension Theorem for Stochastic Processes}
+
+\begin	{theorem}
+\label	{thm:kolmogorov-extension-for-processes}
+Let $S$ be a Polish topological space,
+and $\mathcal T$ a set the elements of which we shall refer to as \term{times}.
+For every finite collection \( I \subseteq \mathcal T \) of times,
+let \( P_I \) be a probability measure on~$S^I$.
+Suppose furthermore that for any finite sets of times \( I \subseteq J \),
+denoting \( s_{J \supseteq I} \colon S^J \to S^I \) the projection,
+we have \( s_{I \subseteq J}(P_J) = P_I \).
+Then there exists a unique probability measure~$P$ on~$S^{\mathcal T}$
+such that, with \( s_I \colon S^{\mathcal T} \to S^I \)
+the projection, \( s_I(P) = P_I \).
+\end	{theorem}
+\begin	{proof}
+This is a special case of general Kolmogorov extension,
+\autoref{thm:kolmogorov-extension}:
+let \( S_I = S^I \), with the projections~$s_{J \supseteq I}$
+induced by the inclusions \( I \subseteq J \).
+It is then easy to see that the projective limit of this system
+is the product~$S^{\mathcal T}$,
+and by the axiom of choice the projections~$s_I$ are surjective.
+In addition, since countable products of Polish spaces are Polish,
+and a measure on a Polish space is always tight,
+all measures~$P_I$ are automatically tight.
+Consequently, \autoref{thm:kolmogorov-extension} applies.
+\end	{proof}
