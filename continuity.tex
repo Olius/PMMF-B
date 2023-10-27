@@ -12,3 +12,76 @@ Suppose that
 Then for any \( \gamma < \alpha/\beta \),
 $X_t$ admits a $\gamma$\dashHolder\ modification.
 \end	{theorem}
+
+Let \( \mathcal D_n = 2^{-n}\N \cap [0,n) \),
+so that \( \mathcal D_\infty = \bigcup_{n \ge 0} \mathcal D_n \)
+is the set of dyadic rationals.
+Let $A_n$ be the event
+\begin	{equation}
+\label	{eq:adjacent-holder}
+	\text{\( \abs{X_t-X_{t'}} \le C'\abs{t-t'}^\gamma = 2^{-n\gamma}C' \)
+	for all adjacent $t$,~$t'$~$\in\mathcal D_n$}
+\end	{equation}
+where we set \( C' = 1 \) for now.
+By Chebyshev's inequality,
+\begin	{align*}
+	\Pr\bigl( \abs{X_t-X_{t'}}^\beta \ge 2^{-n\gamma\beta} \bigr)
+	&\le	\frac {\Pr\bigl( \abs{X_t-X_{t'}}^\beta \bigr)}
+		              {2^{-n\gamma\beta}}                     \\
+	&\le	\frac {C\abs{t-t'}^{\alpha+1}}
+		        {2^{-n\gamma\beta}}                           \\
+	&=	2^{n(\gamma\beta - \alpha - 1)} C                     \text.
+\end	{align*}
+There are $2^n n$ adjacent pairs in~$\mathcal D_n$,
+and so \( \Pr(\, A_n \)~fails\( \,) \le 2^{n(\gamma\beta-\alpha)} nC \).
+Since \( \gamma\beta - \alpha < 0 \),
+the sum~\( \sum_{n \ge 0} \Pr(\, A_n \)~fails$\,)$ is finite,
+hence by the Borel--Cantelli lemma
+$A_n$ holds for all \( n \ge N \) almost surely.
+As \( \bigcup_{n<N} \mathcal D_n \) is finite,
+there is $C'$ such that \eqref{eq:adjacent-holder}~holds
+for every \( n \ge 0 \).
+
+We now show that $X_t$ is consequently $\gamma$\dashHolder\
+in \( t \in \mathcal D_\infty \).
+Call the \term{rank}~$r(t)$
+the smallest~$n$ such that \( t \in \mathcal D_n \).
+We view $\mathcal D_\infty$ as a graph
+whose edges are the union of those of the~$\mathcal D_n$.
+For any path \( t_0 \to\dots\to t_m \) in~$\mathcal D_\infty$,
+define its \term{redundancy} as the number of~$k$
+such that \( r(t_{k-1}) \ge r(t_k) \le r(t_{k+1}) \).
+Among all such paths of total length \( \abs{t_0-t_m} \),
+choose~$T$ with the minimum number of vertices of each rank,
+with larger ranks being most significant in the ordering.
+Then $T$ must have redundancy~$=0$:
+between (or on) any two different points of~$\mathcal D_{n+1}$
+lies a point of~$\mathcal D_n$.
+Hence there are at most two edges in \( T \cap \mathcal D_n \) for every~$n$,
+and no edge has length exceeding \( \abs{t_0-t_m} \).
+This is enough to extract the $\gamma$\dashHolder\ property:
+\begin	{align*}
+	\abs{X_{t_0} - X_{t_m}}
+	&\le	\sum_{k<m} \abs{X_{t_k} - X_{t_{k+1}}} \\
+	&\le	C'\sum_{k<m} \abs{t_k - t_{k+1}}^\gamma \\
+	&\le	2C'\abs{t_0 - t_m}^\gamma \sum_{n \ge 0} 2^{-n\gamma} \\
+	&=	\frac{2C'}{1-2^{-\gamma}} \abs{t_0 - t_m}^\gamma \text.
+\end	{align*}
+
+We now know $X_t$ is $\gamma$\dashHolder, hence uniformly continuous,
+in \( t \in \mathcal D_\infty \).
+Therefore it admits a unique uniformly continuous extension~$\bar X_t$
+to the closure \( \overline{\mathcal D_\infty} = [0,\infty) \),
+which by continuity inherits the \Holder\ property.
+Finally, $\bar X_t$ is a modification of~$X_t$:
+for \( t_\varepsilon \in \mathcal D_\infty \)
+with \( t_\varepsilon \to t \) as \( \varepsilon \to 0 \),
+by Fatou's lemma
+\begin	{align*}
+	\Pr\bigl( \abs{\bar X_t - X_t}^\beta \bigr)
+	&\le	\liminf_{\varepsilon \to 0}
+		\Pr\bigl( \abs{\bar X_{t_\varepsilon} - X_t}^\beta \bigr) \\
+	&\le	\liminf_{\varepsilon \to 0}
+		\abs{t_\varepsilon - t}^{\alpha+1} \\
+	&=	0 \text.
+\end	{align*}
