@@ -1,5 +1,3 @@
-\chapter	{Stochastic Processes and Brownian Motion}
-
 \section	{Stochastic Processes}
 
 \subsection	{The Kolmogorov Extension Theorem for Stochastic Processes}
@@ -57,39 +55,3 @@ and $S$ does not carry the trivial topology,
 then continuity is not measurable in~$S^{\mathcal T}$
 by~\( \sgen(\, s_t : t \in \mathcal T \,) \).
 \end	{corollary}
-
-
-\subsubsection
-	{Borel for compact convergence implies pointwise measurable}
-
-\begin	{theorem}
-Let $X,Y$ be second countable spaces,
-with $X$ locally compact and $Y$ regular.
-Equip the space~$C(X,Y)$ of continuous functions \( X \to Y \)
-with the compact-open topology,
-and denote by~$\mathcal B$ the induced Borel \salg.
-Then \( \mathcal B = \sgen(\, s_x : x \in X \,) \).
-\end	{theorem}
-
-\begin	{corollary}
-In the space of continuous paths \( I \to S \),
-where \( I \subseteq \R \) is an interval and $S$ is separable metric,
-the Borel \salg\ induced by the topology of uniform convergence on compact sets
-coincides with the product \salg.
-\end	{corollary}
-
-\begin	{proof}
-Under these hypotheses,
-the compact-open topology on~$C(X,Y)$ admits a countable basis
-of sets of the form \( R(K,V) = \{\, f(K) \subseteq V \,\} \),
-where \( K \subseteq X \) is compact and \( V \subseteq Y \) is open.
-It thus suffices to show that \( R(K,V) \in \sgen(\, s_x : x \in X \,) \).
-Since $Y$ is regular,
-\( V = \bigcup_n V_n = \bigcup_n \overline{V_n} \)
-is a countable union of opens whose closures are contained in~$V$.
-We can suppose \( V_n \subseteq V_{n+1} \).
-Thus \( R(K,V) = \bigcup_n R(K,V_n) = \bigcup_n R(K,\overline{V_n}) \).
-Finally, for \( F \subseteq Y \) closed,
-\( R(K,F) = R(Q,F) = \bigcap_{q \in Q} R(q,F) \)
-where \( Q \subseteq K \) is a countable dense subset.
-\end	{proof}
