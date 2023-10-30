@@ -1,0 +1,31 @@
+\subsection	{The Wiener Measure}
+
+\begin	{definition}
+A \term{quasi-Brownian motion} is a process~$B_t$, \( t \ge 0 \)
+for which, for \( s < t \), the increment \( B_t - B_s \)
+is normally distributed with mean~$0$ and variance \( t - s \),
+independently of~$B_r$, \( r < s \).
+\end	{definition}
+
+\begin	{lemma}
+If $B_t$ is quasi-Brownian, then so are
+\begin	{itemize}
+\item	$B_{c^2 t}/c$, \( c \ne 0 \),
+\item	\( B_t - B_{t_0} \), \( t_0 \ge 0 \).
+\end	{itemize}
+\end	{lemma}
+
+\begin	{theorem}
+Any quasi-Brownian motion admits a locally $\gamma$\dashHolder\ modification
+for every \( \gamma < 1/2 \).
+\end	{theorem}
+\begin	{proof}
+We can apply the Kolmogorov continuity theorem, %TODO reference
+since normal variables have finite moments of any order and \[
+	\Pr\bigl( \abs{B_t - B_s}^{2p} \bigr)
+	=	\abs{t-s}^p \Pr(\abs{B_1}^{2p})
+	\text.
+	\qedhere
+\]
+\end	{proof}
+%TODO Wiener measure
