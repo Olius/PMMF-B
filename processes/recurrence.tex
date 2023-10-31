@@ -40,9 +40,25 @@ Alternatively, by \autoref{thm:co-subbasic-pointwise-measurable},
 %TODO fix numbering
 \begin	{proposition}
 Almost surely \( \lim_{x\to0} T_x = 0 \).
+Furthermore, \( T_x < \infty \) for all \( x \in \R \)
+with probability~$1$.
 \end	{proposition}
 \begin	{proof}
 \( T_x \to 0 \) iff $B_t$ changes sign on every interval~$[0,\epsilon]$.
 This is an event in~$\mathcal F_{0^+}$,
 but \( 2\prob(B_{[0,\epsilon]} \ge 0) \le 1 \).
+Now suppose $B$ not surjective on~$\R$.
+Then \( \pm B \) is bounded from below,
+or equivalently by compactness,
+there exist \( c \le 0 \le a \) such that \( B_{[a,\infty)} \ge c \).
+But
+\begin	{align*}
+	\Pr\Bigl( \bigcup_{c \le 0 \le a} \{ B_{[a,\infty]} \ge c \} \Bigr)
+	&=	\lim_{c\to-\infty} \lim_{a\to\infty}
+			\Pr( B_{[1,\infty)} \le c/\!\sqrt a ) \\
+	&=	\lim_{c\to-\infty}
+			\Pr( B_{[1,\infty)} \ge 0 ) \\
+	&\le	\Pr(\,\text{\( B \ge 0 \) eventually}\,) \text,
+\end	{align*}
+and \( 2\Pr(\, B \ge 0 \) eventually\(\,) \le 1 \).
 \end	{proof}
