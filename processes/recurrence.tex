@@ -108,3 +108,33 @@ Therefore if we take \( m > (\alpha-1/2)^{-1} \), \[
 and by the Borel--Cantelli Lemma,
 $\bigcup_k \Omega_{nk}$ almost never occurs for arbitrarily large~$n$.
 \end	{proof}
+
+\begin	{theorem}
+Over all partitions \( 0 = t_0 \le\dots\le t_n = t \), \[
+	\text{\( \sum_{k<n} \abs{\Delta_k B_t}^2 \to t \) in~$\Ell^2$}
+	\quad\text{as}\quad
+	\max_{k<n} \Delta_k t \to 0
+	\text.
+\]
+\end	{theorem}
+\begin	{proof}
+Since \( \abs{\Delta_k B_t}^2 - \Delta_k t \) are independent with mean~$0$,
+\begin	{align*}
+	\Pr\biggl[
+		\Bigl( \sum_{k<n}
+			\bigl( \abs{\Delta_k B_t}^2 - \Delta_k t \bigr) \Bigr)^2
+	\biggr]
+	&=	\sum_{k<n} \Pr\Bigl[
+		\bigl( \abs{\Delta_k B_t}^2 - \Delta_k t \bigr)^2
+	\Bigr] \\
+\intertext
+	{which, since $\Delta_k B_t$ is distributed
+		like~$B_1\sqrt{\Delta_kt}$,}
+	&=	\sum_{k<n} (\Delta_kt)^2
+		\Pr\bigl[ \bigl(\abs{B_1}^2 - 1\bigr)^2 \bigr] \\
+	&\le	t \Pr\bigl[ \abs{B_1}^4 - 1 \bigr] \max_{k<n} \Delta_kt \\
+	&\to 0
+	\text.
+	\qedhere
+\end	{align*}
+\end	{proof}
