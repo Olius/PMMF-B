@@ -1,0 +1,57 @@
+\subsection	{The Reflection Principle}
+
+\begin	{theorem}
+Let $T$ be an almost surely finite stopping time adapted to Brownian Motion.
+Then \( B^{(T)}_t = B_{T+t} - B_T \) is Brownian Motion,
+and is independent of~$\fil_T$.
+\end	{theorem}
+\begin	{proof}
+Recall that if $V$ is locally compact Hausdorff,
+then evaluation \( C(U,V) \times C(V,W) \to C(U,W) \) is continuous
+when all mapping spaces are equipped with the compact-open topology.
+Here, $T$ and \( T + t \) as functions of~$t$
+can be viewed as random elements of~$C\bigl([0,\infty),[0,\infty)\bigr)$.
+By second countability and local compactness then,
+continuous evaluation \[
+	C\bigl([0,\infty),[0,\infty)\bigr) \times
+		C\bigl([0,\infty),\R)\bigr)
+	\to C\bigl([0,\infty),\R\bigr)
+\] is measurable over the product on the left.
+Similar reasoning shows that continuous algebraic operations
+applied to random continuous processes
+yield further measurable continuous processes.
+Therefore $B^{(T)}_t$ is measurable as the difference
+of two compositions of random continuous processes.
+
+To find the distribution of~$B^{(T)}_t$,
+we express~$T$ as the decreasing limit of discrete stopping times
+\( T_n = \ceil{Tn}/n \),
+and show the theorem holds for discrete stopping times.
+Then \( T_n \to T \) means that \( T_n + t \to T + t \)
+in~$C\bigl([0,\infty),[0,\infty)\bigr)$,
+so by continuity of composition \[
+	B^{(T)}_t = \lim_{n\to\infty} B^{(T_n)}_t
+	\quad \text{in~\( C[0,\infty) \).}
+\]
+Supposing the thesis holds for~$T_n$,
+since each~$B^{(T_n)}_t$ is independent of~\( \fil_{T_0} \supseteq \fil_T \),
+we obtain independence of~$B^{(T)}$ from~$\fil_T$.
+In addition, its law must be the weak limit of the laws of the~$B^{(T_n)}$,
+and since they are all Brownian Motion, so is~$B^{(T)}$.
+
+Suppose now that $T$ is discrete,
+\( \Pr\bigl(T\in\{t_1,t_2,\dotsc\}\bigr) = 1 \).
+Then for any event \( A \subseteq C[0,\infty) \) and \( E \in \fil_T \),
+in particular when \( \Pr(E) = 1 \),
+\begin	{align*}
+	\Pr\bigl(E\cap\{B^{(T)}\in A\}\bigr)
+	&=	\sum_{n\ge1} \Pr\bigl(
+			E \cap \{T=t_n\} \cap \{B^{(t_n)}\in A\}
+		\bigr) \\
+	&=	\sum_{n\ge1} \Pr\bigl( E \cap \{T=t_n\} \bigr)
+			\Pr(B^{(t_n)}\in A) \\
+	&=	\Pr(E) \Pr( B \in A )
+	\text.
+	\qedhere
+\end	{align*}
+\end	{proof}
