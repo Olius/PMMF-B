@@ -55,3 +55,26 @@ in particular when \( \Pr(E) = 1 \),
 	\qedhere
 \end	{align*}
 \end	{proof}
+
+\begin	{theorem}
+Let $T$ be an almost surely finite stopping time.
+Define \term{reflected} Brownian motion by \[
+	R^T_t =
+	\begin	{cases}
+		B_t	& \text{if \( t \le T \),} \\
+		2B_T - B_t	& \text{if \( t \ge T \).}
+	\end	{cases}
+\]
+Then $R^T_t$ is Brownian motion.
+\end	{theorem}
+\begin	{proof}
+Define \(B_{t \le T} = B_t\) if \( t \le T \) and \( = B_T \) otherwise.
+The operation of concatenation at~$t$ is continuous \[
+	C[0,\infty) \times [0,\infty) \times C[0,\infty) \to C[0,\infty)
+	\text,
+\] hence measurable,
+and sends \( (B_{t \le T},T,B^{(T)}) \mapsto B \)
+and \( (B_{t \le T},T,-B^{(T)}) \mapsto R^T \).
+But $\pm B^{(T)}$ are independent of both $T$ and~$B_{t \le T}$,
+and have the same distribution as~$B$.
+\end	{proof}
