@@ -78,3 +78,31 @@ and \( (B_{t \le T},T,-B^{(T)}) \mapsto R^T \).
 But $\pm B^{(T)}$ are independent of both $T$ and~$B_{t \le T}$,
 and have the same distribution as~$B$.
 \end	{proof}
+
+\begin	{proposition}
+Let $x$,~\( c \ge 0 \).
+Then \( \Pr(\, T_x \le t \), \( B_t \le x - c \,)
+	= \Pr( B_t \ge x+c ) \).
+\end	{proposition}
+\begin	{proof}
+Reflecting at the first hitting time~$T_x$ of~$x$
+gives a distribution-preserving bijection \( B_t \leftrightarrow R^{T_x}_t \)
+under which correspond these two events.
+\end	{proof}
+
+\begin	{theorem}
+\begin	{equation*}
+	\Pr(T_x \le t) = \Pr\bigl( \abs{B_t} \ge \abs x \bigr) \text.
+\end	{equation*}
+\end	{theorem}
+\begin	{proof}
+For \( x \ge 0 \),
+using the previous proposition and that \( \Pr(B_t=x) = 0 \),
+\begin	{align*}
+	\Pr( T_x \le t)
+	&=	\Pr(\, \text{\( T_x \le t \), \( B_t \le x \)} \,)
+	+	\Pr(\, \text{\( T_x \le t \), \( B_t >   x \)} \,) \\
+	&=	2\Pr( B_t \ge x ) \text.
+	\qedhere
+\end	{align*}
+\end	{proof}
