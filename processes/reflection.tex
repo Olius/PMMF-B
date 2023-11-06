@@ -106,3 +106,26 @@ using the previous proposition and that \( \Pr(B_t=x) = 0 \),
 	\qedhere
 \end	{align*}
 \end	{proof}
+
+\begin	{theorem}
+Let \( 0 \le t_0 \le t_1\).
+Then \[
+	\Pr(0 \in B_{[t_0,t_1]}) = \tfrac2\pi\arccos\sqrt{t_0/t_1} \text.
+\]
+\end	{theorem}
+\begin	{proof}
+\begin	{align*}
+	\Pr(0 \in B_{[t_0,t_1]})
+	&=	2\int_{B_{t_0}\ge0}
+			\Pr(\, 0 \in B_{[t_0,t_1]} \wcond B_{t_0} \,)
+		\,dB_{t_0} \\
+	&=	2\int_{x\ge0} \Pr( T_{-x} \le t_1-t_2 )
+			\frac{dB_{t_0}}{dx} \,dx \\
+	&=	\frac1{\pi\sqrt{t_0}}
+		\int_{\substack{x\ge0\\t\le t_1-t_0}}
+		\frac {\exp\bigl(-\tfrac12x^2(1/t+1/t_0)\bigr)}{t^{3/2}}
+		\,dx \\
+	&=	\tfrac2\pi\arctan\sqrt{t_1/t_0-1} \text.
+	\qedhere
+\end	{align*}
+\end	{proof}
