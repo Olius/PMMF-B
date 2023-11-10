@@ -1,0 +1,169 @@
+\section	{Markov Processes and Transition Probabilities}
+
+\begin	{definition}
+A stochastic process~$X_t$ is a \term{Markov process}
+if whenever \( s \le t \), for every measurable \( A \subseteq S_t \), \[
+\text
+	{\( \Pr(\,X_t \in A \wcond X_{\le s}\,)
+		= \Pr(\,X_t \in A \wcond X_s\,) \)
+	almost surely.}
+\]
+\end	{definition}
+
+\begin	{definition}
+Let $X$,~$Y$ be measurable spaces.
+A \term{Markov kernel} \( p \colon X \to Y \)
+is a family of probability measures~$p_x$ parametrized by \( x \in X \),
+such that for fixed bounded measurable~$g$ on~$Y$,
+\( \int g\,dp_x \) is a measurable function of \( x \in X \).
+\end	{definition}
+
+\begin	{definition}
+If a Markov process~$X_t$ takes values in Polish spaces,
+then \( d(X_t\cond X_s) \) admits a regular version~$dp^t_s$.
+We call the family~$p^t_s$ the \term{transition probabilities} of~$X_t$.
+\end	{definition}
+
+\begin	{remark}
+Henceforth we tacitly assume all Markov processes
+admit transition probabilities.
+\end	{remark}
+
+\begin	{definition}
+Given two Markov kernels \( X \stackrel p\to Y \stackrel q\to Z \),
+their \term{(dependent) product} \( r \colon X \to Y \times Z \)
+is defined by \[
+	\int f\,dr = \iint f\,dq\,dp \text.
+\]
+Hence we slightly abuse notation by writing \( dr = dq\,dp \).
+\end	{definition}
+
+\begin	{proposition}
+The product \( dr = dq\,dp \) is indeed a Markov kernel,
+and multiplication is associative.
+\end	{proposition}
+\begin	{proof}
+Clearly \( dr_x \) is continuous
+with respect to dominated pointwise convergence,
+and is a probability measure.
+Measurability in~$x$ is proven with the monotone class theorem.
+Associativity \( (dr\,dq)\,dp = dr\,(dq\,dp) \) holds
+since integrating~$f$ against both sides gives
+\( \iiint f\,dr\,dq\,dp \).
+\end	{proof}
+
+\begin	{proposition}
+The transition probabilities and initial distribution of a Markov process
+determine its finite-dimensional distributions, through \[
+	d(X_{t_n},\dots,X_{t_0})
+	= dp^{t_n}_{t_{n-1}} \,\dotsm\, dp^{t_0}_0 \, dp^0 \text.
+\]
+\end	{proposition}
+\begin	{proof}
+\begin	{align*}
+	d(X_{t_{n+1}},\dots,X_{t_0})
+	&= d(X_{t_{n+1}}\cond X_{t_n},\dots,X_{t_0}) \,
+		d(X_{t_n},\dots,X_{t_0}) \\
+	&= d(X_{t_{n+1}}\cond X_{t_n}) \,
+		d(X_{t_n},\dots,X_{t_0})
+	\text. \qedhere
+\end	{align*}
+\end	{proof}
+
+\begin	{definition}
+Consider a Markov kernel
+\( p \colon W \to \prod_i X_i \).
+The \term{contraction} of~$p$ along~$x_i$,
+written \( \int_{x_i} dp \),
+is defined at every \( w \in W \) as its pusforward along the projection
+\( \pi_i \colon \prod_i X_i \to \prod_{j\ne i} X_j \): \[
+	\int_{x_i} dp_w = \pi_i(dp_w) \text.
+\]
+Because integration along a given coordinate and precomposition commute,
+contraction and multiplication of Markov kernels commute,
+in that \( \int_x (dr\,dq\,dp) = dr\,(\int_x dq\,dp) \)
+and \( \int_y (dr\,dq\,dp) = (\int_y dr\,dq)\,dp \);
+hence we omit parentheses.
+\end	{definition}
+
+\begin	{proposition}
+Multiplication of Markov kernels \( W \stackrel p\to X \stackrel q\to Y \)
+is left-cancellative,
+in that \( dq\,dp_w = dq\,dp'_w \) implies \( p_w = p'_w \).
+Under the assumption that the \salg\ on~$Y$ is countably generated,
+it is also right-cancellative,
+in that if \( dq\,dp_w = dq'\,dp_w \),
+then \( q_x = q'_x \) for $p_w$\nobreakdash-almost every~$x$.
+\end	{proposition}
+\begin	{proof}
+Left-cancellativity follows from \( dp_w = \pi_X(dq\,dp_w) \).
+For right-cancellativity, fix a bounded measurable~$g$ on~$Y$.
+Then for any b.m.~$f$ on~$X$,
+\( \int f (\int g\,dq) \,dp_w = \int fg \,dq\,dp_w \),
+so $\int g\,dq$ is determined $p_w$\nobreakdash-almost everywhere
+by~$dq\,dp_w$.
+Supposing a countable family of~$g$ generates all b.m.~functions on~$Y$,
+the measure $q$ is then determined $p_w$\nobreakdash-a.e.\ by~\(dq\,dp_w\).
+\end	{proof}
+
+\begin	{corollary}
+The transition probabilities of a Markov process
+satisfy the \term{Chapman--Kolmogorov equations}, \[
+	dp^t_r = \int_{x_s} dp^t_s\,dp^s_r \text,
+	\quad r \le s \le t \text.
+\]
+\end	{corollary}
+\begin	{proof}
+For \( r \le s \le t \), we have
+\( d(X_t,X_s\cond X_r)\,dX_r = d(X_t\cond X_s)\,d(X_s\cond X_r)\,dX_r \),
+hence \( d(X_t,X_s\cond X_r) = d(X_t\cond X_s)\,d(X_s\cond X_r) \)
+almost surely.
+Projecting \( (t,s) \mapsto t \) concludes.
+\end	{proof}
+
+\begin	{theorem}
+If a family of Markov kernels~$p^t_s$
+satisfies the Chapman--Kolmogorov equations,
+then for every initial distribution~$p^0$ there exists a unique Markov process
+with $p^t_s$ as transition probabilities.
+\end	{theorem}
+\begin	{proof}
+We have uniqueness because transition probabilities determine
+a Markov process's finite-dimensional distributions.
+For existence, define
+\( dP_{t_1,\dots,t_n} = dp^{t_n}_{t_{n-1}} \,\dotsm\, dp^{t_1}_0 \, dp^0 \).
+The~$P_{t_1,\dots,t_n}$ form a compatible family
+of finite-dimensional distributions:
+by associativity of multiplication of Markov kernels,
+\begin	{align*}
+	\pi_{\{t_{i\ne k}\}}(dP_{\{t_i\}})
+	&=	\int_{x_{t_k}} dp^{t_n}_{t_{n-1}} \,\dotsm\,
+		dp^{t_{k+1}}_{t_k} \, dp^{t_k}_{t_{k-1}} \,\dotsm\,
+		dp^{t_1}_0 \, dp^0 \\
+	&=	dp^{t_n}_{t_{n-1}} \,\dotsm\, dp^{t_{k+1}}_{t_{k-1}}
+		\,\dotsm\, dp^{t_1}_0 \, dp^0 \\
+	&=	dP_{\{t_{i\ne k}\}} \text.
+\end	{align*}
+By the Kolmogorov extension theorem there exists a unique process~$X_t$
+with $P_{\{t_i\}}$ as finite-dimensional distributions.
+Then since
+\( dP_{t_1,\dots,t_n,t} = dp^t_s \, dP_{t_1,\dots,t_n,s} \)
+and $p^t_s$ is measurable by \( X_s = \pi_s(X_{r\le s}) \),
+\( d(X_t\cond X_{r\le s}) = dp^t_s = d(X_t\cond X_s) \),
+and $X_t$ is a Markov process with transition probabilities~$p^t_s$.
+\end	{proof}
+
+\begin	{theorem}[Dynkin]
+Suppose the state space~$S$ of a Markov process~$X_t$ is Polish.
+Define \[
+	\alpha_r(\delta) = \sup_{\substack
+		{0\le t-s\le\delta \\
+		x \in S}}
+		p^t_s\bigl(x,\co{B_x(r)}\bigr)
+	\text.
+\]
+If \( \lim_{\delta\to0} \alpha_r(\delta) = 0 \)
+then $X_t$ admits a càdlàg modification.
+If \( \lim_{\delta\to0} \alpha_r(\delta)/\delta = 0 \)
+then $X_t$ admits a continuous modification.
+\end	{theorem}
