@@ -1,0 +1,26 @@
+\section	{Brownian Motion as a Markov Process}
+
+\begin	{proposition}
+Brownian motion~$B_t$ in $d$~dimensions
+is a Markov process with translation-invariant
+stationary transition probability given at the origin by
+\[ dp^t = \frac {\exp(-\norm x^2/2t)} {(2\pi t)^{d/2}} \,dx \text. \]
+\end	{proposition}
+\begin	{proof}
+\begin	{align*}
+	\Pr(\, B_t \in A \wcond B_{r\le s} \,)
+	&= \Pr(\, B_s + B_t - B_s \in A \wcond B_{r\le s} \,) \\
+	&= \Pr\bigl(f(B_s,B_t-B_s)\big\cond B_{r\le s}\bigr)
+\end	{align*}
+if we define the bounded measurable
+\( f(x,y) = [x+y\in A] \).
+Proceeding then by use of the monotone class theorem,
+since \( B_t-B_s \) is independent of~$B_{r\le s}$
+and distributed like~$B_{t-s}$,
+\[	\Pr(\, B_t \in A \wcond B_{r\le s} \,)(\gamma)
+=	\Pr\bigl(f(\gamma(s),B_{t-s})\bigr),
+\]
+which, being a function only of \( \gamma(s) = B_s \),
+is the transition probability \( \Pr(\,B_t\in A\wcond B_s\,) \),
+and evidently depends only on the difference \( t-s \).
+\end	{proof}
