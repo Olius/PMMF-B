@@ -1,0 +1,25 @@
+\section	{Local Generators and Diffusion Processes}
+
+\begin	{definition}
+An operator~$L$ on a subspace \( B \subseteq \mb(S) \) is \term{local}
+if $Lf(x)$ depends only on the values of~$f$ in any neighborhood of~$x$.
+\end	{definition}
+
+\begin	{proposition}
+If a family of stationary transition probabilities
+satisfy \( \lim_{\delta\to0} \alpha_r(\delta)/\delta = 0 \)
+for every \( r > 0 \),
+then the generator~$A$ of the associated Markovian semigroup
+is a local operator.
+There is equivalence when for open $U_1$,~$U_2$~$\subseteq S$
+with disjoint closures
+there exists a continuous \( f \colon S \to \R \)
+with \( f(U_1) = 0 \) and \( f(U_2) > 0 \).
+\end	{proposition}
+
+\begin	{proposition}
+Let $T_t$ be a Markovian semigroup with generator~$A$.
+If \( x_0 \in S \) is a local maximum of~$f$,
+then \( Af(x) \le 0 \).
+The same holds if $x_0$ is only a local maximum but $A$ is local.
+\end	{proposition}
