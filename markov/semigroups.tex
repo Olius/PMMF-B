@@ -1,0 +1,81 @@
+\section	{Markovian Semigroups and Infinitesimal Generators}
+
+\begin	{definition}
+Let $\mb(S)$ be the Banach space of bounded measurable functions on~$S$
+with the supremum norm,
+and let \( B \subseteq \mb(S) \) be a closed subspace.
+An operator \( T \colon B \to B \) is \term{Markovian}
+if it is positivity-preserving, of norm~$1$,
+and \( \sup_{f\le1} Tf = 1 \) pointwise.
+Put on the monoid of Markovian operators
+the topology of pointwise convergence.
+A \term{Markovian semigroup} on~$B$ is a continuous monoid homomorphism
+of~$[0,\infty)$ into the monoid of Markovian operators on~$B$.
+\end	{definition}
+
+\begin	{lemma}
+Continuity at \( 0 \in [0,\infty) \)
+is enough for continuity of a monoid homomorphism
+\( [0,\infty) \to M \).
+\end	{lemma}
+\begin	{proof}
+\( m_t = m_{t-s} m_s \) if \( s \le t \).
+\end	{proof}
+
+\begin	{proposition}
+Restricting a Markovian semigroup~$T_t$ on~$B$ which is not continuous
+to the set of \( f \in B \) at which it is continuous at \( t = 0 \)
+yields a closed subspace \( B_0 \subseteq B \)
+on which $T_t$ is a continuous Markovian semigroup.
+\end	{proposition}
+
+\begin	{definition}
+Given a Markovian semigroup~$T_t$ on~$B$,
+its \term{infinitesimal generator}~$A$ is defined over its natural domain as \[
+	\text{\(Af = \lim_{t\to0} t^{-1}(T_t f - f)\) in~$B$.}
+\]
+\end	{definition}
+
+\begin	{theorem}
+The domain of~$A$ is a dense subset of~$B$ stable under~$T_t$,
+over which $A$~and~$T_t$ commute,
+and \( f(t,x) = (T_t f_0)(x) \) solves the Cauchy problem \[
+	\begin	{cases}
+	\frac\partial{\partial t} f = Af & t \ge 0 \text,\\
+	f = f_0                          & t =   0 \text.
+	\end	{cases}
+\]
+\end	{theorem}
+
+\begin	{theorem}
+If
+\[ \lim_{\delta\to0} \alpha_r(\delta) = 0 \quad \text{for all \(r>0\),} \]
+then \( \Cont_0(S) \subseteq B_0 \).
+If $S$ is compact then the converse holds as well.
+\end	{theorem}
+
+\begin	{definition}
+A \term{Fellerian semigroup} is a Markovian semigroup on~$\Cont_0(S)$.
+A stationary Markov process is \term{Fellerian}
+if its Markovian semigroup restricts to a Fellerian semigroup.
+\end	{definition}
+
+\begin	{theorem}
+For a semigroup on~$\mb(S)$ arising from a Markov process
+as
+\begin	{equation}
+\label	{eq:process-semigroup-correspondence}
+	(T_tf)(x) = \Pr[\, f(X_t) \wcond X_0 = x \,]
+\end	{equation}
+to be Fellerian,
+it is enough to restrict to~$\Cont_0(S)$;
+in other words, for this kind of semigroup,
+continuity on~$\Cont_0(S)$ is a consequence of its preservation.
+\end	{theorem}
+
+\begin	{theorem}
+If $S$ is locally compact,
+there is a one-to-one correspondence
+between Feller processes and Feller semigroups
+given by~\eqref{eq:process-semigroup-correspondence}.
+\end	{theorem}
