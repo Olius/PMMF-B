@@ -23,3 +23,50 @@ If \( x_0 \in S \) is a local maximum of~$f$,
 then \( Af(x) \le 0 \).
 The same holds if $x_0$ is only a local maximum but $A$ is local.
 \end	{proposition}
+
+\begin	{theorem}
+Let $p_t$ be a family of stationary transition probabilities on~$\R^d$.
+Suppose we have bounded measurable \( b \in (\R^d)^* \)
+and \( a \in (\R^d)^*\otimes(\R^d)^* \),
+such that the following hold for every \( r > 0 \).
+\begin	{itemize}
+\item	\( \lim_{\delta\to0} \alpha_r(\delta)/\delta = 0 \).
+\item	\( \tfrac1t\int_{\norm{x-y}<r} (y-x)^* \,p_t(x,dy) \to b_x \)
+	and \( \tfrac1t\int_{\norm{x-y}<r} (y-x)^* \otimes (y-x)^*
+		\,p_t(x,dy) \to a_x \)
+	uniformly in~$x$ on compact sets as \( t \to 0 \).
+\end	{itemize}
+Then \( a \ge 0 \),
+and on~$\Cont^2_c(\R^d)$ the generator \( A = L_{ab} \).
+\end	{theorem}
+\begin	{proof}
+The bilinear operator~$a$ is positive since
+\[ a(v,v) = \lim_{t\to0} \int_{\norm h\le1} \langle h\vert v\rangle^2 \,dp_t
+	\ge 0 \text. \]
+Let \( f \in \Cont^2_\mathrm c \) with compact support~$K_f$, \( r > 0 \),
+and \( K \subseteq \R^d \) compact such that \( d(K_f,\co K) \ge r \).
+Then
+\begin	{align*}
+	\sup_{x\in\R^d} \Bigl\lvert
+		\frac{T_t f(x) - f(x)}{t} - L_{ab}f(x)
+	\Bigr\rvert
+	&= \sup_{x\in\R^d} \Bigl\lvert
+		\int_{\norm h\ge0}\Bigl[
+			\frac{f(y)-f(x)}{t} - L_{ab}f(x)
+		\Bigr] \,dp_t
+	   \Bigr\rvert \\
+	&\le \sup_{x\in K} \Bigl\lvert
+			\int_{\norm h<r}\Bigl[
+				\frac{f(y)-f(x)}{t} - L_{ab}f(x)
+			\Bigr] \,dp_t
+		\Bigr\rvert \\
+	&\quad	+ 2\norm f_\infty \frac{\alpha_r(t)}{t}
+		+ \norm{L_{ab}f}_\infty \alpha_r(t)
+	\text,
+\end	{align*}
+and the final terms \( \to 0 \) with~$t$
+by the hypothesis on~$\alpha_r(\delta)$,
+while the integral term \( \to 0 \) with $t$ and~$r$
+by using Taylor expansion on~$f$
+and then the hypotheses on $a$ and~$b$.
+\end	{proof}
