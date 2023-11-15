@@ -1,0 +1,23 @@
+\section	{Brownian Motion as a Diffusion Process}
+
+Brownian motion is a Markov process
+with translation-invariant transition probabilities given at the origin by
+\( dp_t = d(B_t) \).
+\begin	{itemize}
+\item	\( \alpha_r(t)/t = \frac1t\Pr(\abs{B_t}\ge r)
+	= \frac{4\pi}{(2\pi)^{d/2}} t^{-1} \int_{r/\!\sqrt t}^{+\infty}
+		x^{d-1} \exp(-x^2/2) \,dx
+	\to 0 \)
+	by l'Hôpital's rule.
+\item	\( \frac1t \int_{\R^d} x\,dp_t = \frac1t \Pr(B_t) = 0 \).
+\item	Write $d$\nobreakdash-dimensional Brownian motion as
+	\( B_t = (B^1_t,\dots,B^d_t) \).
+	Then
+	\begin	{equation*}
+		\frac1t \int_{\R^d} x_i x_j \,dp_t
+		=	\frac1t \Pr(B^i_t B^j_t)
+		=	[i=j] \text.
+	\end	{equation*}
+\end	{itemize}
+Thus Brownian motion is a diffusion process
+with generator \( A = \Lap \) the Laplacian over~$\Cont^2_c(\R^d)$.
