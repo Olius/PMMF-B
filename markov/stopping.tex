@@ -1,0 +1,14 @@
+\section	{Stopping Times and the Strong Markov Property}
+
+%TODO Move stuff from the part on BM to here, and generalize.
+
+\begin	{theorem}[strong Markov property]
+Let $X_t$ be a stationary continuous (or càdlàg) Markov process,
+and $T$ a finite stopping time.
+Then \( d(X_{\ge T}\cond X_{\le T}) = d(X_{\ge 0}\cond X_0)_{X_T} \)
+pointwise almost surely,
+in that for every bounded measurable~$f$,
+\[ \text{\( \Pr[f(X_{\ge T})\cond X_{\le T}]
+	=  \Pr[f(X_{\ge 0})\cond X_0](X_T) \)
+	almost surely.} \]
+\end	{theorem}
