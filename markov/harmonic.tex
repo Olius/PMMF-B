@@ -1,0 +1,125 @@
+\section	{Harmonic Functions and Brownian Motion}
+
+\begin	{definition}
+A continuous function is \term{harmonic}
+if its value at~$x$ equals its average over every sphere centered at~$x$.
+\end	{definition}
+
+\begin	{theorem}\leavevmode
+\label	{thm:harmonic}
+\begin	{enumerate}
+\item	If $f$ is harmonic then \( f \in \Cont^\infty \) and \( \Lap f = 0 \).
+\item	If \( f \in \Cont^2 \) and \( \Lap f = 0 \) then $f$ is harmonic.
+\item	If \( D \subseteq \R^d \) is open and connected
+	and \( f \colon D \to \R \) is harmonic,
+	then $f$ attains a local maximum if and only if it is constant.
+\item	For any bounded \( D \subseteq \R^d \),
+	if $f$ is harmonic in~$D$ and continuous on its closure,
+	\[ \inf_{\partial D} f \le f \le \sup_{\partial D} f \text. \]
+\end	{enumerate}
+\end	{theorem}
+
+\begin	{proposition}
+\label	{prop:mean-laplacian}
+If \( f \in \Cont^2 \),
+\[	\int_{B_r} \Lap f \,\frac{dV}{\vol{B_r}}
+=	\frac{d}{dr} \int_{S_r} f \,\frac{dA}{\vol{S_r}}
+\text. \]
+\end	{proposition}
+\begin	{proof}
+\begin	{align*}
+\frac{d}{dr} \int_{x \in S_r} f(x) \,\frac{dA}{\vol{S_r}}
+&=	\frac{d}{dr} \int_{\theta \in S_1} f(r\theta) \,\frac{dA}{\vol{S_1}} \\
+&=	\oint_{\theta \in S_1} \grad f(r\theta) \cdot \theta
+		\,\frac{dA}{\vol{S_1}} \text, \\
+\intertext{which by the divergence theorem}
+&=	\int_{\theta \in B_1} \Lap f(r\theta) \,\frac{dV}{\vol{B_1}}
+\text. \qedhere
+\end	{align*}
+\end	{proof}
+
+\begin	{proof}[Proof of \autoref{thm:harmonic}]\leavevmode
+\begin	{enumerate}
+\item	The mean value property implies that \( f = f * \varphi \)
+	for any mollifier~$\varphi$ which is radially symmetric
+	and of integral~$1$.
+	Taking \( \varphi \in \Cont^\infty \) and of small compact support
+	shows \( f \in \Cont^\infty \).
+	Then the previous proposition shows in the limit \( r \to 0 \)
+	that \( \Lap f = 0 \).
+\item	The mean value property follows from the previous proposition,
+	since \( \lim_{r\to0} \int_{S_r} f \,dA/\vol{S_r} = f(0) \).
+\item	If \( \max f = m \),
+	then \( \{f \ne m\} \) and \( \{f = m\} \) are both open,
+	the first because $f$ is continuous
+	and the second by the mean value property.
+\item	As it is continuous,
+	$f$ attains a maximum at some \(x_0 \in \overline D\).
+	If \( x_0 \in \partial D \) then the theorem is trivially true,
+	and if \( x_0 \in D \) then $f$ is constant.
+\qedhere
+\end	{enumerate}
+\end	{proof}
+
+\begin	{lemma}
+There is a unique probability measure on the sphere \( S \subseteq \R^d \)
+which is invariant under rotations.
+\end	{lemma}
+\begin	{proof}
+As the group $G$ of rotations is compact,
+it admits a probability measure invariant
+under both left and right multiplication,
+the Haar measure.
+Let \( x_0 \in S \),
+and let $\mu$ be the pushforward of the Haar measure
+under the map \( g \mapsto gx_0 \).
+Then $\mu$ is invariant under rotations
+by left-invariance of the Haar measure:
+\[ \int_{x \in S} f(g_0x) \,d\mu = \int_{g \in G} f(g_0gx_0) \,dg
+	= \int_{g \in G} f(gx_0) \,dg \text. \]
+Let $\nu$ be any rotation-invariant probability measure on~$S$.
+By transitivity of the action of $G$ on~$S$,
+for every \( x \in S \) there is \( g_x \in G \)
+such that \( g_x x_0 = x \).
+Then an application of Fubini's theorem
+and right-invariance of the Haar measure concludes:
+\begin	{align*}
+\int_S f \,d\nu
+&=	\int_{g \in G} \int_{x \in S} f(gx) \,d\nu \,dg	\\
+&=	\int_{x \in S} \int_{g \in G} f(gg_xx_0) \,dg \,d\nu \\
+&=	\int_{x \in S} \int f \,d\mu \,d\nu \text.
+\qedhere
+\end	{align*}
+\end	{proof}
+
+\begin	{theorem}
+Let \( D \subseteq \R^d \) open,
+and let \( h \colon \partial D \to \R \) be bounded measurable.
+Suppose that the time~$T$ of first exit of Brownian motion from~$D$
+is almost surely finite for every starting point \( x \in D \).
+Then for any starting point, \( B_T \in \partial D \),
+and the following function is harmonic in~$D$:
+\begin	{equation}
+\label	{eq:laplace-solution}
+	f(x) = \Pr_{B_0 = x}[h(B_T)] \text.
+\end	{equation}
+\end	{theorem}
+\begin	{proof}
+By definition $T$ is a limit
+both of times~$s_n$ such that \( B_{s_n} \in D \)
+and of times~$t_n$ such that \( B_{t_n} \in \co D \),
+so by continuity \( B_T \in \partial D \).
+Fix \( x = x_0 \in D \) and define \( \tau_r \)
+as the time of first exit of \( x_0 + \overline{B_r} \subseteq D \).
+Then \( \tau_r \le T \),
+so that $h(B_T)$ is a function of~$B_{\ge\tau_r}$,
+and we can apply the strong Markov property to obtain
+\[ \Pr_{B_0 = x_0}[h(B_T)]
+	= \int \Pr_{B_0 = x}[h(B_T)] \,dB_{\tau_r}(x)
+	\text. \]
+Since $dB_{\tau_r}$ is concentrated on the sphere~$S_r$
+and is invariant under rotations,
+by the previous lemma it is the normalized Lebesgue measure.
+The integral on the right is then precisely the mean of~$f(x)$
+over \( x \in S_r \).
+\end	{proof}
