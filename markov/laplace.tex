@@ -1,0 +1,93 @@
+\section	{The Laplace Equation}
+
+\begin	{definition}
+Let \( \tau_x = \inf\{\, t>0 \mid x+B_t \notin D \,\} \)
+be the time of first exit of~$B$ from~$D$.
+By the 0--1~law, \( \Pr(\tau_x = 0) = 0 \)~or~$1$;
+call \( x \in \partial D \) \term{regular} if~$1$.
+If all \( x \in \partial D \) are regular then $D$ is \term{regular}.
+\end	{definition}
+
+\begin	{theorem}[Poincaré--Zaremba]
+If there is a finite-length cone at \( x \in \partial D \)
+contained in~$\co D$,
+then $x$ is regular.
+\end	{theorem}
+\begin	{proof}
+Writing $T_C$ for the first entry time
+in the corresponding infinite-length cone~$C$,
+by rescaling invariance
+\( \Pr(\tau_x=0) \ge \Pr(T_C=0) \ge \Pr(B_1 \in C) > 0 \).
+\end	{proof}
+
+\begin	{lemma}
+The function \( \Pr(\tau_x > t) \) is upper-semicontinuous in \( x \in D \)
+for every \( t > 0 \).
+\end	{lemma}
+\begin	{proof}
+\begin	{equation*}
+\Pr(\tau_x > t)
+%&=	\lim_{s\to0} \Pr( x+B_{[s,t]} \subseteq D ) \\
+=	\lim_{s\to0}
+	\Pr\bigl[ \Pr(\, x+B_{[s,t]} \subseteq D \wcond B_s \,) \bigr]
+\text. \qedhere
+\end	{equation*}
+\end	{proof}
+
+\begin	{corollary}
+For every \( t > 0 \) and regular \( x_0 \in \partial D \),
+\( \lim_{x \to x_0} \Pr(\tau_x > t) = 0 \text. \)
+\end	{corollary}
+
+\begin	{theorem}
+The harmonic function defined in~\eqref{eq:laplace-solution}
+is continuous at every regular \( x_0 \in \overline D \).
+\end	{theorem}
+\begin	{proof}
+Define \( \Delta_x = h(B_{\tau_x}) - h(x_0) \).
+By continuity at \( x_0 \in \partial D \),
+we can suppose
+\( \abs{x-x_0} < 2\delta \) implies \( \abs{h(x) - h(x_0)} < \epsilon \).
+Let $T_x$ be the first exit time of \( x + B_t \) from~$B(x_0,2\delta)$.
+Then we have
+\begin	{align*}
+\Pr\bigl(\abs{\Delta_x}\bigr)
+&=	\Pr\bigl( [\tau_x <   T_x] \abs{\Delta_x} \bigr)
++	\Pr\bigl( [\tau_x \ge T_x] \abs{\Delta_x} \bigr) \\
+&\le	\epsilon
++	2\norm h_\infty \Pr(\tau_x \ge T_x)
+\text.
+\end	{align*}
+Furthermore, for any \( t > 0 \), if we suppose \( \abs{x-x_0} < \delta \),
+\begin	{align*}
+\Pr(T_x \le \tau_x)
+&\le	\Pr(T_x \le t) + \Pr(\tau_x > t) \\
+&\le	\Pr\bigl(\max_{0 \le s \le t} \norm{B_s} \ge \delta\bigr)
++	\Pr(\tau_x > t)
+\text.
+\end	{align*}
+Taking the limit superior as \( x \to x_0 \) cancels the right summand,
+and then the limit as \( t \to 0 \) the left.
+\end	{proof}
+
+\begin	{theorem}
+If $D$ is regular and \( \tau_x < \infty \) almost surely
+for every \( x \in D \),
+and \( h \colon \partial D \to \R \) is bounded and continuous,
+then \eqref{eq:laplace-solution} gives the unique solution
+\( f \in \Cont^2(D) \cap \Cont(\overline D) \)
+of the steady-state heat equation
+\begin	{equation}
+\label	{eq:heat-equation}
+	\begin	{cases}
+	\Lap f = 0  &\text{in~$D$,} \\
+	f = h	    &\text{on~$\partial D$.}
+	\end	{cases}
+\end	{equation}
+\end	{theorem}
+\begin	{proof}
+The previous results show that $f$ is indeed a solution;
+uniqueness follows from the maximum principle
+since the difference of two solutions is harmonic in~$D$
+and zero on~$\partial D$.
+\end	{proof}
