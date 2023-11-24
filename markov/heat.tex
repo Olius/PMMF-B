@@ -1,0 +1,61 @@
+\section	{Solving the Heat Equation}
+
+\begin	{proposition}
+If $S$~and~$T$ are commuting Markovian semigroups,
+with generators $A$~and~$B$ respectively,
+then the product Markovian semigroup \( t \mapsto S_t T_t \)
+has generator \( A + B \).
+\end	{proposition}
+\begin	{proof}
+This is a consequence of the product rule applied to composition,
+which itself is a consequence of the chain rule:
+indeed, if $[x,y]$ is a bilinear map
+then it is continuously Fréchet-differentiable with
+\( d[x,y] = [dx,y] + [x,dy] \),
+and since composition is bilinear and \( dS = dT = 1 \) at \( t = 0 \),
+\[ d(ST) = dS + dT \quad \text{at \( t = 0 \).} \qedhere \].
+\end	{proof}
+
+\begin	{corollary}
+If two independent stationary Markov processes $X$~and~$Y$
+have transition probabilities $p$~and~$q$
+and generators $A$~and~$B$ respectively,
+then $(X,Y)$ has generator \( A \oplus B \).
+\end	{corollary}
+\begin	{proof}
+Apply the monotone convergence theorem
+to show that the transition probabilities of~$(X,Y)$
+are the product of those of $X$ and~$Y$:
+ultimately this translates to
+\( d(X_t,Y_t\cond X_0,Y_0) = d(X_t\cond X_0) \, d(Y_t\cond Y_0) \)
+pointwise almost surely,
+valid by independence of $X$~and~$Y$.
+Then the conclusion is immediate from the previous proposition
+since the Markovian semigroup of~$(X,Y)$ is the direct sum
+of those of $X$ and~$Y$.
+\end	{proof}
+
+\begin	{definition}
+\term{Space-time Brownian motion} started at~$(t_0,x_0)$
+is defined as the semi-deterministic process \( (t_0-t,x_0+B_t) \).
+By the previous corollary it has generator
+\[ -\frac{\partial}{\partial t} + \frac12 \Lap \text. \]
+\end	{definition}
+
+\begin	{theorem}
+Let \( D \subseteq \R^d \) be regular,
+\( h \colon \partial \bigl( [0,\infty) \times D \bigr) \to \R^d \)
+continuous and bounded for every fixed \( t \in [0,\infty) \).
+Define $\tau$ to be the time of first exit
+of space-time Brownian motion~$H$ from \( D \times [0,t] \).
+Then \( u = \Pr[\, h(H_\tau) \wcond H_0 = (t_0,x_0) \,] \)
+is a solution to the dynamic heat equation
+\begin	{equation}
+\label	{eq:dynamic-heat}
+\begin	{cases}
+	\frac{\partial u}{\partial t} = \frac12 \Lap u
+		& \text{if \( x \in D \) and \( t > 0 \),} \\
+	u = h & \text{if \( x \in \partial D \) or \( t = 0 \).}
+\end	{cases}
+\end	{equation}
+\end	{theorem}
