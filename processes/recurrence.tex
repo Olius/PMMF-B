@@ -79,31 +79,34 @@ Then by continuity and compactness, for some number~$M$, \[
 	\text{\( \abs{B_{t_0+h} - B_{t_0}} \le Mh^\alpha \)
 		when \(0 \le h \le 1 \).}
 \]
-Hence for arbitrary~$n$,
-whenever \( k-1 \le 2^n t_0 \le k \) and \( j \ge 1 \) are not too large,
+Hence for any large enough~$n$,
+whenever \( k-1 \le 2^n t_0 \le k \) and \( 1 \le j \le m \),
 \begin	{align*}
 	\abs{ B_{(k+j)/2^n} - B_{(k+j-1)/2^n} }
 	&\le	\abs{ B_{(k+j)/2^n} - B_{t_0} }
 		+ \abs { B_{(k+j-1)/2^n} - B_{t_0} } \\
-	&\le	\frac {M\bigl((j+1)^\alpha+j^\alpha\bigr)} {2^{\alpha n}}
+	&\le	\frac {M\bigl((j+1)^\alpha+j^\alpha\bigr)} {2^{\alpha n}} \\
+	&\le	\frac {2M(m+1)^\alpha} {2^{\alpha n}}
 	\text.
 \end	{align*}
-Choose any \( C \ge 2^\alpha M \), and let $\Omega_{nk}$ be the event \[
+It suffices to show this is has probability zero
+for \( 0 \le t_0 \le 1 \).
+Choose any \( C \ge 0 \), and let $\Omega_{nk}$ be the event \[
 	\abs{ B_{2^{-n}(k+j)} - B_{2^{-n}(k+j-1)} } \le
-		\frac {Cm^\alpha} {2^{\alpha n}}
+		\frac C {2^{\alpha n}}
 	\quad \text{for \( j = 1 \), \dots,~$m$.}
 \]
 By independence of increments, rescaling,
 and that the normal density is~\( \le 1/2 \),
 \begin	{align*}
 	\Pr(\Omega_{nk}) &\le \Pr\bigl(
-		\abs{B_1} \le \sqrt{2^n} Cm^\alpha / 2^{\alpha n} \bigr)^m \\
-	&\le	\frac {Cm^{m\alpha} M^m} {2^{nm(\alpha-1/2)}}
+		\abs{B_1} \le \sqrt{2^n} C / 2^{\alpha n} \bigr)^m \\
+	&\le	\frac {C^m} {2^{nm(\alpha-1/2)}}
 	\text.
 \end	{align*}
 Therefore if we take \( m > (\alpha-1/2)^{-1} \), \[
 	\Pr\Bigl( \bigcup_{k=0}^{2^n-m} \Omega_{nk} \Bigr)
-	\le 2^{n - nm(\alpha-1/2)} Cm^{m\alpha}
+	\le 2^{n - nm(\alpha-1/2)} C^m
 \] is summable over~$n$,
 and by the Borel--Cantelli Lemma,
 $\bigcup_k \Omega_{nk}$ almost never occurs for arbitrarily large~$n$.
