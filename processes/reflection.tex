@@ -114,18 +114,20 @@ Then \[
 \]
 \end	{theorem}
 \begin	{proof}
+With \( t = t_1/t_0 \),
 \begin	{align*}
 	\Pr(0 \in B_{[t_0,t_1]})
-	&=	2\int_{B_{t_0}\ge0}
-			\Pr(\, 0 \in B_{[t_0,t_1]} \wcond B_{t_0} \,)
-		\,dB_{t_0} \\
-	&=	2\int_{x\ge0} \Pr( T_{-x} \le t_1-t_2 )
-			\frac{dB_{t_0}}{dx} \,dx \\
-	&=	\frac1{\pi\sqrt{t_0}}
-		\int_{\substack{x\ge0\\t\le t_1-t_0}}
-		\frac {\exp\bigl(-\tfrac12x^2(1/t+1/t_0)\bigr)}{t^{3/2}}
-		\,dx \\
-	&=	\tfrac2\pi\arctan\sqrt{t_1/t_0-1} \text.
+	&=	2\int_{B_1\ge0}
+			\Pr(\, 0 \in B_{[1,t]} \wcond B_1 \,) \,dB_1 \\
+	&=	2\int_{x\ge0} \Pr( T_{-x} \le t-1 ) \,dB_1(x) \\
+	&=	2\int_{x\ge0} \Pr( B_1 \ge x\sqrt{t-1} ) \,dB_1(x) \\
+	&=	\frac2\pi
+		\int_{0\le y\le x\sqrt{t-1}} \exp\frac{x^2+y^2}{-2}
+			\,dx\,dy \\
+	&=	\frac2\pi
+		\int_{0\le\cos\theta\le1/\!\sqrt t}
+			r\exp(-r^2/2) \,dr\,d\theta \\
+	&=	\frac2\pi\arccos\frac1{\sqrt t} \text.
 	\qedhere
 \end	{align*}
 \end	{proof}
